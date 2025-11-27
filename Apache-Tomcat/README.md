@@ -3,68 +3,86 @@
   <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYm5vaHRnaGpjbXl0M2V2ZGo4Y3E3ZDlua2tmaDZidHVyNTdyazY0NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/KzJkzjggfGN5Py6nkT/giphy.gif" width="200"/>
 </div>
 
-<h1 align="center">
-  <span class="bold">Welcome aboard! Explore our realm</span>
-  <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="40px"/>
-</h1>
 
-<div id="badges" align="center">
-  <a href="https://www.linkedin.com/in/tekade-sukant-3343bb252">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge" style="border-radius: 5px;"/>
-  </a>
-  <a href="https://www.instagram.com/muschifresser/" target="_blank">
-    <img src="https://img.shields.io/badge/Instagram-AA336A?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram Badge" style="margin-bottom: 5px;" />
-  </a>
-  <a href="https://github.com/tekadesukant">
-    <img src="https://img.shields.io/badge/GitHub-purple?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge"/>
-  </a>
-</div>
 
----
+<br>
+<br>
 
 # Documentation Contents
 
 1. [Introduction](#introduction)
 2. [What's Inside](#whats-inside)
-3. [Supported Platforms](#supported-platforms)
-4. [Additional Scripts](#additional-scripts)
-5. [How to Use](#how-to-use)
-6. [Integrated Commands](#integrated-commands)
-7. [Features](#features)
-8. [Support](#support)
+3. [Project Structure](#project-structure)
+4. [Supported Platforms](#supported-platforms)
+5. [Additional Scripts](#additional-scripts)
+6. [How to Use](#how-to-use)
+7. [Integrated Commands](#integrated-commands)
+8. [Features](#features)
+9. [Support](#support)
 
 ---
 
-# Introduction <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">
+# Introduction <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="25">
 
-Welcome to **Apache-Tomcat-iNiT**, your go-to solution for effortlessly installing and configuring Apache Tomcat. 
+Welcome to **Apache-Tomcat-Installer**, your go-to solution for effortlessly installing and configuring Apache Tomcat. 
 
 ## What's Inside?
 
-- **Automated Script**: A robust script that handles the complete installation and setup of Tomcat. Simply execute it and watch your server come to life! 🛠️
-- **Weekly Updates**: The script is updated weekly. A job fetches the latest Tomcat version and updates the  `apache-tomcat.sh` file for you. 🌟
-- **User-Friendly**: Say goodbye to manual setups. Our script ensures a smooth and quick installation process. ⏱️
-- **Ready to Action**: Get straight to coding and deployment with Tomcat fully configured and ready to use! 💻
+- **Automated Script**: A robust script that handles the complete installation and setup of Tomcat. Simply execute it and watch your server come to life! 
+- **Weekly Updates**: The script is updated weekly. A job fetches the latest Tomcat version and updates the `apache-tomcat.sh` file for you. 
+- **Integrated Admin Tools**: Packed with essential Linux commands to perform administrative tasks effortlessly during setup and maintenance.
+- **Broad Compatibility**: Seamlessly runs on Amazon Linux, Ubuntu, Debian, CentOS Stream, and RHEL — making it highly adaptable across environments.
+
+## Project Structure
+
+```
+Apache-Tomcat-Installer/
+├── apache-tomcat.sh
+├── README.md
+├── Dependencies/
+│   ├── removetomcat.sh
+│   ├── passwizard.sh
+│   ├── portuner.sh
+│   └── fetchport.sh
+└── .github/
+    └── workflows/
+        └── fetch_tomcat_versions.yml
+
+```
 
 ## Supported Platforms
 
-Our scripts support the following environments on AWS:
+Our scripts support the following OS platforms/cloud environments:
 
-- **Compatible Linux Distributions**:
-  - `Apache-Tomcat.sh`: Compatible to Install Tomcat on Amazon Linux, Ubuntu, CentOS Stream, Debian and RHEL.
+- **Supported Linux Distributions**:
+  - `apache-tomcat.sh` : `This script has been succesfully tested on an Ubuntu 22.04/24.04, RHEL 8/9, CentOS Stream 8/9, Amazon Linux 2/2023 and Debian 12. Testing on Debian 10/11 is currently in progress.`
+
+## Additional Scripts
+
+- **Remove Tomcat**:
+  - `removetomcat.sh`: Uninstalls Tomcat.
+- **Change Password**:
+  - `passwizard.sh`: Changes the Tomcat admin password.
+- **Change Port Number**:
+  - `portuner.sh`: Changes the Tomcat port number.
+- **Fetch Port Number**:
+  - `fetchport.sh`: Fetch the Tomcat port number.
     
-
 ## How to Use
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Githorex/ShellSmith.git
-   cd ShellSmith/Apache-Tomcat
+   git clone https://github.com/tekadesukant/Apache-Tomcat-Installer.git
+   cd Apache-Tomcat-QuickSet
    ```
 
 2. **Run the desired script:**
    ```bash
-   sh apache-tomcat.sh       # For Amazon Linux, Ubuntu, CentOS Stream, Debian and RHEL
+   sh apache-tomcat.sh                   # For Amazon Linux, Ubuntu, Debian, CentOS Stream, and RHEL
+   sh Dependencies/removetomcat.sh       # To remove Tomcat
+   sh Dependencies/passwizard.sh         # To change password
+   sh Dependencies/portuner.sh           # To change port number
+   sh Dependencies/fetchport.sh          # Fetch the Tomcat port number.
    ```
 
 ## Integrated Commands
@@ -110,15 +128,8 @@ We've integrated convenient commands to manage Tomcat:
   ```bash
   tomcat --help 
   ```
-  
-## Features
-
-- **User-Friendly**: Our scripts prompt for necessary input values, making them easy to use and customize.
-- **Flexible**: Easily switch between different environments and configurations.
-- **Automated Updates**: Stay up-to-date with the latest Tomcat versions without any manual effort.
 
 ## Support
 
-If you encounter any issues or have questions, feel free to open an issue on our [GitHub repository](https://github.com/Githorex/ShellSmith/issues) or reach out to me.
+If you encounter any issues or have questions, feel free to open an issue on our [GitHub repository](https://github.com/tekadesukant/Apache-Tomcat-Installer/issues) or reach out to me.
 
-Happy coding! 🚀
