@@ -1,0 +1,58 @@
+name: Update README with Project Structure
+
+on:
+  push:
+    paths:
+      - '**'
+      - '!README.md'
+  pull_request:
+    paths:
+      - '**'
+      - '!README.md'
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Ensure tree is installed
+        run: |
+          if ! command -v tree &> /dev/null; then
+            sudo apt-get update && sudo apt-get install -y tree
+          fi
+
+      - name: Generate project structure
+        run: |
+          echo '```' > structure.md
+          tree -I '.git|node_modules|__pycache__' -a >> structure.md
+          echo '```' >> structure.md
+
+      - name: Replace old project structure section
+        run: |
+          # Remove existing project structure block
+          awk '
+            BEGIN {skip=0}
+            /^## Project Structure/ {print; skip=1; next}
+            skip && /^## / {skip=0}
+            !skip
+          ' README.md > temp_readme.md
+
+          # Add the new structure section
+          cat temp_readme.md structure.md > new_readme.md
+          mv new_readme.md README.md
+          rm temp_readme.md structure.md
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          git diff --cached --quiet || git commit -m "Update project structure in README"
+          git push
