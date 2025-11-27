@@ -37,7 +37,7 @@ Follow these steps to use the `InstallGit.bat` script:
 
 2. **Run the Script**:
    - Open PowerShell with administrative privileges.
-   - Navigate to the directory where you saved the `InstallGit.bat` file using the `cd` command.
+   - Navigate to the directory where you saved the `InstallGit.bat`.
    - Execute the script by typing `.\InstallGit.bat` and pressing **Enter**.
 
    ```shell
