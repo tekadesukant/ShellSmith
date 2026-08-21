@@ -4,7 +4,7 @@
 
 # Latest version successfully fetched 
 TOMCAT_VERSION=9.0.121
-# Previous Versions : 10.1.57, 11.0.25
+# Previous Versions : 10.1.59, 11.0.25
 
 # Extracting major version from fetched version
 MAJOR_VERSION=$(echo "$TOMCAT_VERSION" | cut -d'.' -f1)
